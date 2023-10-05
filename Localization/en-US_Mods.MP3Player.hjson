@@ -1,0 +1,157 @@
+Keybinds.OpenMusicPlayer.DisplayName: Open Music Player
+
+Biomes: {
+	Forest: Overworld Day
+	Night: Overworld Night
+	TownDay: Town Day
+	TownNight: Town Night
+	SurfaceJungle: Surface Jungle
+	UndergroundJungle: Underground Jungle
+	SurfaceCorruption: Surface Corruption
+	UndergroundCorruption: Underground Corruption
+	SurfaceCrimson: Surface Crimson
+	UndergroundCrimson: Underground Crimson
+	SurfaceDesert: Surface Desert
+	UndergroundDesert: Underground Desert
+	SurfaceSnow: Surface Snow
+	UndergroundSnow: Underground Snow
+	SurfaceHallow: Surface Hallow
+	UndergroundHallow: Underground Hallow
+	Ocean: Ocean
+	Rain: Rain
+	Space: Space
+	Dungeon: Dungeon
+	Underground: Underground
+	Sandstorm: Sandstorm
+	WindyDay: Windy Day
+	Thunderstorm: Thunderstorm
+	LunarEvent: Celestial Towers
+	OOA: Old One's Army
+	GoblinArmy: Goblin Invasion
+	FrostLegion: Frost Legion
+	Pirates: Pirate Invasion
+	PumpkinMoon: Pumpkin Moon
+	FrostMoon: Frost Moon
+	Martians: Martian Madness
+	Hell: Underworld
+	Meteor: Meteor
+	Mushroom: Glowing Mushroom
+	Graveyard: Graveyard
+	Temple: Lihzahrd Temple
+
+	Calamity: {
+		Crags: Brimstone Crag [Calamity]
+		Astral: Astral Infection [Calamity]
+		SunkenSea: Sunken Sea [Calamity]
+		SulphurSea: Sulphurous Sea [Calamity]
+		Abyss: The Abyss [Calamity]
+	}
+}
+
+UI: {
+	AsyncMP3Downloader: {
+		GetManifest: Getting Manifest...
+		GetTitle: Getting Video Title...
+		GetAudio: Downloading Audio Stream...
+		ConvertFile: Converting MP4 to MP3 (ffmpeg)...
+		Complete: Download Complete!
+		ConnectionTimeout: Connection timeout! Could not complete download. Check your internet connection and try again.
+		InvalidYoutubeUrl: Invalid youtube link! Please check that it is correct and try again.
+	}
+
+	MP3PlayerMenu: {
+		AddSong:
+			'''
+			Download song from the link in the box?
+			This will paste copied text into the box if it is empty.
+			'''
+		StopSong: Stop the current song?
+		PreviousSong: Go to the previous song?
+		SkipBack: Rewind 10 seconds?
+		PausePlay: Toggle pause/play?
+		SkipAhead: Fast forward 10 seconds?
+		NextSong: Go to the next song?
+		Shuffle:
+			'''
+			Cycle mode (play once - playlist - shuffle - loop)?
+			Custom presets will only play on "play once" mode.
+			'''
+		Menu: Return to menu?
+		UIShuffle: Shuffle
+		SongList: Select Song
+		NoSongs:
+			'''
+			Use '+' to paste
+			a copied youtube link
+			into the text box, and
+			again to download it.
+			'''
+		DeleteSong: Delete
+		AddCondition: Preset
+		ConditionNext: Next
+		ConditionPrevious: Prev
+		ConditionSelect: Ok
+		ConditionMenu: Configure Condition
+		ConditionBoss:
+			'''
+			Replaces the music
+			thats plays during a
+			specific bossfight.
+			'''
+		ConditionBiome:
+			'''
+			Replaces the music
+			that plays in a
+			specific biome.
+			'''
+		ConditionLastAlive:
+			'''
+			Plays during all
+			bossfights when 
+			<20% HP (SP) or 
+			last alive (MP).
+			'''
+		ConditionWhenDead:
+			'''
+			Plays after you
+			die, and until
+			you respawn.
+			'''
+		ConditionCheckOthers:
+			'''
+			Press 'play' to
+			view any existing
+			conditions for
+			this song.
+			'''
+		NoExistingConditions:
+			'''
+			This song does not
+			have any custom
+			conditions.
+			'''
+		ConditionBossSelect: Select Boss
+		ConditionBiomeSelect: Select Biome
+		ConditionProceed: Confirm
+		ConditionConfirmChoice: Are you sure?
+		ConditionBack: Back
+		ConditionView: View conditions: {0}/{1}
+		DeleteCondition: Del
+		ConditionThisWillPlay: This will play
+		ConditionThisPlays: This preset plays
+		ConditionResetSong: Press 'play' to remove any custom songs from '{0}'
+		ConditionLastManStanding: When you're nearly dead
+		ConditionOnDeath: While you're dead
+		BossCondition: While you fight
+		BiomeCondition: While you're within
+		SetNewLastManStanding: Successfully set a new song for 'last man standing'.
+		ClearedLastManStanding: Successfully removed the 'last man standing' song if it was previously set.
+		SetNewOnDeath: Successfully set a new song for 'on death'.
+		ClearedOnDeath: Successfully removed the 'on death' song if it was previously set.
+		SetNewBossCondition: Successfully set a new song for boss '{0}'.
+		RemovedBossCondition: Successfully removed a custom song from boss '{0}'.
+		SetNewBiomeCondition: Successfully set a new song for biome '{0}'.
+		RemovedBiomeCondition: Successfully removed a custom song from biome '{0}'.
+		ConditionResetLastManStandingSong: Press 'play' to remove any custom 'last man standing' songs.
+	}
+}

@@ -1,0 +1,6 @@
+UltraSonic is designed to be the last music mod you'll ever need in terraria.
+
+Featuring a beautiful and easy to use GUI that can be toggled with a keybind, the user can input a YouTube link to download its audio into the ingame library. From there, the user can play these songs ingame.
+
+It goes further than this though: the song can then be assigned to replace any boss theme, biome theme, or even play just before or after the user's death. This results in endless customisation that can replace any other music mod in existence.
+
