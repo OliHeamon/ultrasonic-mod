@@ -1,2 +1,0 @@
-- Adjust window position on UI scaling
-- Connection timeout handling
