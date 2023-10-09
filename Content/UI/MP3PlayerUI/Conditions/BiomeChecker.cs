@@ -109,6 +109,7 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Conditions
             Register("Rain", p => p.ZoneOverworldHeight && p.ZoneRain, 0.1f);
             Register("Thunderstorm", p => p.ZoneOverworldHeight && Main.IsItAHappyWindyDay && Main.cloudAlpha > 2 / 3f, 0.2f);
             Register("Sandstorm", p => p.ZoneSandstorm, 0.8f);
+            Register("BloodMoon", p => Main.bloodMoon, 0.25f);
 
             Register("LunarEvent", p => p.ZoneTowerNebula || p.ZoneTowerSolar || p.ZoneTowerStardust || p.ZoneTowerVortex, 1);
             Register("OOA", p => p.ZoneOldOneArmy, 1);

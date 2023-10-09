@@ -7,8 +7,8 @@ using Terraria.ModLoader;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
-using static Terraria.ModLoader.Core.TmodFile;
 using System.IO.Compression;
+using static Terraria.ModLoader.Core.TmodFile;
 
 namespace MP3Player
 {
@@ -61,7 +61,7 @@ namespace MP3Player
             }
         }
 
-        // In older versions of the mod it was just ffmpeg.exe so this needs to be removed.
+        // In older versions of the mod it was just ffmpeg.exe so this needs to be removed from the filesystem.
         private static void RemoveLegacyFFmpeg(string path)
         {
             string legacyFFmpeg = Path.Combine(path, "ffmpeg.exe");
@@ -117,6 +117,7 @@ namespace MP3Player
             return Process.Start(info);
         }
 
+        // This mess is unfortunately necessary because tML isn't on .NET 7 so there's no good API for modifying Linux file permissions.
         [DllImport("libc", SetLastError = true)]
         private static extern int chmod(string pathname, int mode);
 
@@ -135,11 +136,11 @@ namespace MP3Player
         private static int Chmod(string path)
         {
             // Shotgun all the permissions.
-            int _0777 = S_IRUSR | S_IWUSR | S_IXUSR
+            int _777 = S_IRUSR | S_IWUSR | S_IXUSR
                 | S_IRGRP | S_IWGRP | S_IXGRP
                 | S_IROTH | S_IWOTH | S_IXOTH;
 
-            return chmod(path, _0777);
+            return chmod(path, _777);
         }
     }
 }

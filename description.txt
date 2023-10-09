@@ -11,18 +11,22 @@ https://discord.gg/vYZWcXgAfR
 
 Update Log:
 
+v1.4:
+-Added a 'Blood Moon' option to biomes list.
+-The primary and secondary colours on the GUI's screen can now be customised in the config.
+
 v1.3.4:
--Fixed file permissions issue on linux that caused FFmpeg to not run properly.
+-Fixed a file permissions issue on linux that caused FFmpeg to not run properly.
 
 v1.3:
-- [!!!] Fixed a bug where text would fail to render properly on UI scales above or below 100%.
--Addressed a bug where rarely certain YouTube videos would download but then crash if the user tried to play them. Instead, the download will notify the user that the video is malformatted and will not appear ingame.
+-Fixed a major bug where text would fail to render properly on UI scales above or below 100%.
+-Addressed a bug where rarely certain YouTube videos would download but then crash if the user tried to play them. Instead, the user will now be notified that the video is malformatted and it will not appear on the list.
 -The "Now Playing" popup can now be disabled in the config (but is still on by default).
 -The mod now includes FFmpeg versions for Mac OSX and Linux, meaning the mod now should work on all platforms.
 
 v1.2:
--Fixed a major bug where overwriting an existing preset would cause the game to freeze.
+-Fixed a major bug where overwriting an existing preset would cause the game to softlock.
 
 v1.1:
--Removed weird anti-russian DRM in YoutubeExplode.
+-Removed the anti-russian DRM in YoutubeExplode.
 

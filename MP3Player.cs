@@ -12,9 +12,9 @@ namespace MP3Player
     {
         public const string Silence = "Assets/Sounds/Silence";
 
-        public static readonly Color Cyan = new(130, 233, 229);
+        public static Color Cyan;
 
-        public static readonly Color Pink = new(226, 114, 175);
+        public static Color Pink;
 
         public static readonly Color MusicalBackgroundColor = new(34, 31, 38);
 
@@ -53,6 +53,11 @@ namespace MP3Player
         public override void PostSetupContent()
         {
             PopulateBossList();
+
+            MP3PlayerConfig config = ModContent.GetInstance<MP3PlayerConfig>();
+
+            Cyan = config.Cyan;
+            Pink = config.Pink;
         }
 
         private void PopulateBossList()

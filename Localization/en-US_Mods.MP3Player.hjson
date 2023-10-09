@@ -23,6 +23,7 @@ Biomes: {
 	Dungeon: Dungeon
 	Underground: Underground
 	Sandstorm: Sandstorm
+	BloodMoon: Blood Moon
 	WindyDay: Windy Day
 	Thunderstorm: Thunderstorm
 	LunarEvent: Celestial Towers
@@ -163,6 +164,16 @@ Configs: {
 
 		SendNowPlayingMessages: {
 			Label: Send 'Now Playing' Messages
+			Tooltip: ""
+		}
+
+		Cyan: {
+			Label: Primary GUI Color
+			Tooltip: ""
+		}
+
+		Pink: {
+			Label: Secondary GUI Color
 			Tooltip: ""
 		}
 	}
