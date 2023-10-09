@@ -4,6 +4,7 @@ using ReLogic.Content;
 using System.Collections.Generic;
 using System.IO;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MP3Player
@@ -80,6 +81,11 @@ namespace MP3Player
                     }
                 }
             }
+
+            Bosses.Remove($"{NPCID.MoonLordHead}");
+            Bosses.Remove($"{NPCID.MoonLordHand}");
+
+            Bosses.Insert(1, NPCID.EaterofWorldsHead.ToString());
 
             // Attempts to remove duplicate boss names caused by worm segments.
             List<string> removeBuffer = new();

@@ -11,6 +11,10 @@ https://discord.gg/vYZWcXgAfR
 
 Update Log:
 
+v1.5.1:
+-Added Eater of Worlds to the boss list.
+-Removed duplicate Moon Lord entries from the boss list.
+
 v1.5:
 -Added the ability to import local MP3 files into the ingame library. To open a file selection window, simply double click on the text box at the bottom of the GUI.
 
