@@ -37,7 +37,7 @@ namespace MP3Player.Content.IO
 
                     string conditionKey = item.Key.Replace($"{ConditionDictionaryTag}:", "");
 
-                    Conditions.Add(conditionKey, uuid);
+                    Conditions[conditionKey] = uuid;
                 }
             }
         }
@@ -56,7 +56,7 @@ namespace MP3Player.Content.IO
 
         public void AddCondition(string condition, string uuid)
         {
-            Conditions.Add(condition, uuid);
+            Conditions[condition] = uuid;
 
             ForceSave();
         }

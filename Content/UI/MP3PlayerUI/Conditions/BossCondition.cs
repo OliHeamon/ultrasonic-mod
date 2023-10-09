@@ -21,7 +21,7 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Conditions
 
             string condition = $"{MP3PlayerDataStore.BossConditionKey}:{Choice}";
 
-            store.Conditions.Add(condition, Uuid);
+            store.Conditions[condition] = Uuid;
 
             store.ForceSave();
 

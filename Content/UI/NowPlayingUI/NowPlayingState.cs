@@ -2,6 +2,7 @@
 using MP3Player.Common.UI.Abstract;
 using MP3Player.Content.UI.MP3PlayerUI.Playback;
 using System.Collections.Generic;
+using Terraria.ModLoader;
 using Terraria.UI;
 
 namespace MP3Player.Content.UI.NowPlayingUI
@@ -28,6 +29,11 @@ namespace MP3Player.Content.UI.NowPlayingUI
 
         public void NotifyActiveSong(PlaybackWidget widget)
         {
+            if (!ModContent.GetInstance<MP3PlayerConfig>().SendNowPlayingMessages)
+            {
+                return;
+            }
+
             // If there's already an active popup then don't bother with the initial animation.
             if (currentPopup != null)
             {

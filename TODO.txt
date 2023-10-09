@@ -1,0 +1,7 @@
+FEATURES:
+-Customize GUI colours via config
+-Make the window movable
+[MAYBE] Replacement targeting specific modded songs instead of biomes or bosses.
+[MAYBE] importing custom songs from system (windows only)
+[MAYBE] spotify/soundcloud support
+[MAYBE] playlist mass download

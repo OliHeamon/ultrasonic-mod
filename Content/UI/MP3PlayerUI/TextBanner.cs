@@ -90,7 +90,15 @@ namespace MP3Player.Content.UI.MP3PlayerUI
                 spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, state,
                     null, Main.UIScaleMatrix);
 
-                Main.instance.GraphicsDevice.ScissorRectangle = Rectangle;
+                float xScale = Main.UIScaleMatrix.M11;
+                float yScale = Main.UIScaleMatrix.M22;
+
+                Main.instance.GraphicsDevice.ScissorRectangle = new Rectangle(
+                    (int)(Rectangle.X * xScale),
+                    (int)(Rectangle.Y * yScale),
+                    (int)(Rectangle.Width * xScale),
+                    (int)(Rectangle.Height * yScale)
+                );
 
                 spriteBatch.DrawString(font, text, position + new Vector2(offset, 0), color);
 

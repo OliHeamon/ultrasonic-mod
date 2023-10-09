@@ -12,6 +12,7 @@ using ReLogic.OS;
 using MP3Player.Common.UI.Themes;
 using MP3Player.Common.UI;
 using System;
+using static Terraria.GameContent.Animations.IL_Actions.Sprites;
 
 namespace MP3Player.Content.UI.MP3PlayerUI.Selection
 {
@@ -107,9 +108,19 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Selection
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, state,
                 null, Main.UIScaleMatrix);
 
+            float xScale = Main.UIScaleMatrix.M11;
+            float yScale = Main.UIScaleMatrix.M22;
+
             Rectangle drawBox = GetDimensions().ToRectangle();
 
-            Main.instance.GraphicsDevice.ScissorRectangle = new(drawBox.X + 8, drawBox.Y, drawBox.Width - 16, drawBox.Height);
+            Rectangle rectangle = new(drawBox.X + 8, drawBox.Y, drawBox.Width - 16, drawBox.Height);
+
+            Main.instance.GraphicsDevice.ScissorRectangle = new Rectangle(
+                (int)(rectangle.X * xScale),
+                (int)(rectangle.Y * yScale),
+                (int)(rectangle.Width * xScale),
+                (int)(rectangle.Height * yScale)
+            );
 
             const float scale = 0.85f;
 

@@ -23,9 +23,4 @@
       <HintPath>lib\YoutubeExplode.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <None Update="ffmpeg.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>

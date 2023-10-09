@@ -43,7 +43,7 @@ namespace MP3Player.Core.Audio
                     double elapsedMs = 0;
 
                     int incrementMs = 100;
-                    int limitSeconds = 60;
+                    int limitSeconds = 90;
 
                     while (IsBusy && internetRequired)
                     {
@@ -74,6 +74,9 @@ namespace MP3Player.Core.Audio
 
         private static async Task DownloadFromUrlAsync(string url, ProgressUpdateDelegate onProgressUpdate, CompletionDelegate onComplete, FailureDelegate onFail, CancellationToken cancellationToken)
         {
+            string path = MP3Player.CachePath;
+            string uuid = Guid.NewGuid().ToString();
+
             try
             {
                 YoutubeClient youtube = new();
@@ -84,13 +87,9 @@ namespace MP3Player.Core.Audio
 
                 IStreamInfo streamInfo = streamManifest.GetAudioOnlyStreams().GetWithHighestBitrate();
 
-                string path = MP3Player.CachePath;
-
                 onProgressUpdate.Invoke(0.4f, LocalizationHelper.GetGUIText("AsyncMP3Downloader.GetTitle"));
 
                 (string, string) videoInfo = await GetTitle(youtube, url);
-
-                string uuid = Guid.NewGuid().ToString();
 
                 string songFile = Path.Combine(path, $"{uuid}.mp4");
                 string titleFile = Path.Combine(path, $"{uuid}.txt");
@@ -118,23 +117,33 @@ namespace MP3Player.Core.Audio
 
                 IsBusy = false;
             }
+            catch (FileNotFoundException)
+            {
+                onFail.Invoke(LocalizationHelper.GetGUIText("AsyncMP3Downloader.FFmpegError"));
+
+                File.Delete($"{Path.Combine(path, $"{uuid}.mp4")}");
+                File.Delete($"{Path.Combine(path, $"{uuid}.mp3")}");
+
+                IsBusy = false;
+            }
         }
 
         private static void ConvertMp4ToMp3(string path, string uuid)
         {
-            ProcessStartInfo info = new()
-            {
-                FileName = Path.Combine(path, "ffmpeg.exe"),
-                Arguments = $"-i \"{Path.Combine(path, $"{uuid}.mp4")}\" -vn -f mp3 -ab 320k \"{Path.Combine(path, $"{uuid}.mp3")}\"",
-                CreateNoWindow = true
-            };
+            string args = $"-i \"{Path.Combine(path, $"{uuid}.mp4")}\" -vn -f mp3 -ab 320k \"{Path.Combine(path, $"{uuid}.mp3")}\"";
 
-            Process process = Process.Start(info);
+            Process process = FFmpeg.Run(path, args);
 
             // Wait until ffmpeg conversion is finished before deleting the MP4 file.
             while (!process.HasExited)
             {
 
+            }
+
+            // If FFmpeg encounters an error then the file is malformatted, so throw exception.
+            if (process.ExitCode != 0)
+            {
+                throw new FileNotFoundException("Malformatted MP3.");
             }
 
             File.Delete($"{Path.Combine(path, $"{uuid}.mp4")}");
