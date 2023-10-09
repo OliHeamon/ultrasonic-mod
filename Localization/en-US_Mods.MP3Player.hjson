@@ -59,6 +59,8 @@ UI: {
 		ConnectionTimeout: Connection timeout! Could not complete download. Check your internet connection and try again. This may also be due to the video being too large to convert in time.
 		InvalidYoutubeUrl: Invalid youtube link! Please check that it is correct and try again.
 		FFmpegError: Error converting file! This youtube video is not correctly formatted for ingame use.
+		FileSelect: Select an MP3 file to import.
+		ImportSuccessful: Successfully imported MP3 file '{0}' into the ingame library!
 	}
 
 	MP3PlayerMenu: {
@@ -155,6 +157,7 @@ UI: {
 		SetNewBiomeCondition: Successfully set a new song for biome '{0}'.
 		RemovedBiomeCondition: Successfully removed a custom song from biome '{0}'.
 		ConditionResetLastManStandingSong: Press 'play' to remove any custom 'last man standing' songs.
+		FileDialogTooltip: Double-click this text box to import an MP3 from your local files.
 	}
 }
 

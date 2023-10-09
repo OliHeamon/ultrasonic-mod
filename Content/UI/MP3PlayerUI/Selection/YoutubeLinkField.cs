@@ -12,7 +12,13 @@ using ReLogic.OS;
 using MP3Player.Common.UI.Themes;
 using MP3Player.Common.UI;
 using System;
-using static Terraria.GameContent.Animations.IL_Actions.Sprites;
+using System.Runtime.InteropServices;
+using MP3Player.Localization;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Utilities.FileBrowser;
+using AngleSharp.Media;
+using System.IO;
+using MP3Player.Core.UI;
 
 namespace MP3Player.Content.UI.MP3PlayerUI.Selection
 {
@@ -47,6 +53,42 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Selection
             SetTyping();
         }
 
+        public override void SafeDoubleClick(UIMouseEvent evt)
+        {
+            NativeFileDialog dialog = new();
+
+            ExtensionFilter[] filters = new ExtensionFilter[1];
+            filters[0] = new ExtensionFilter("MP3 files", "mp3");
+
+            string file = dialog.OpenFilePanel(LocalizationHelper.GetGUIText("AsyncMP3Downloader.FileSelect"), filters);
+
+            // User closed the file dialog without selecting anything.
+            if (file == null)
+            {
+                return;
+            }
+
+            Guid uuid = Guid.NewGuid();
+
+            string path = MP3Player.CachePath;
+
+            string originalFileName = Path.GetFileNameWithoutExtension(file);
+
+            string songFile = Path.Combine(path, $"{uuid}.mp3");
+            string titleFile = Path.Combine(path, $"{uuid}.txt");
+
+            byte[] bytes = File.ReadAllBytes(file);
+
+            File.WriteAllBytes(songFile, bytes);
+            File.WriteAllText(titleFile, $"{originalFileName}{Environment.NewLine}{Environment.UserName ?? "?"}");
+
+            Main.NewText(LocalizationHelper.GetGUIText("AsyncMP3Downloader.ImportSuccessful", originalFileName), MP3Player.Cyan);
+
+            MP3PlayerMainPanel panel = MP3PlayerUILoader.GetUIState<MP3PlayerState>().MainPanel;
+
+            panel.ChangeWidget(new SongSelectionWidget(panel), true);
+        }
+
         public override void SafeUpdate(GameTime gameTime)
         {
             if (reset)
@@ -56,16 +98,22 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Selection
             }
 
             if (updated)
+            {
                 reset = true;
+            }
 
             if (Main.mouseLeft && !IsMouseHovering)
+            {
                 SetNotTyping();
+            }
         }
 
         private void HandleText()
         {
-            if (Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Escape))
+            if (Main.keyState.IsKeyDown(Keys.Escape))
+            {
                 SetNotTyping();
+            }
 
             PlayerInput.WritingText = true;
             Main.instance.HandleIME();
@@ -73,8 +121,10 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Selection
             string newText = Main.GetInputText(CurrentValue);
 
             // GetInputText() handles typing operation, but there is a issue that it doesn't handle backspace correctly when the composition string is not empty. It will delete a character both in the text and the composition string instead of only the one in composition string. We'll fix the issue here to provide a better user experience
-            if (_oldHasCompositionString && Main.inputText.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Back))
+            if (_oldHasCompositionString && Main.inputText.IsKeyDown(Keys.Back))
+            {
                 newText = CurrentValue; // force text not to be changed
+            }
 
             if (newText != CurrentValue)
             {
@@ -154,6 +204,11 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Selection
                 Utils.DrawBorderString(spriteBatch, "|", pos, Color.White, scale);
 
             RestartSpriteBatch(spriteBatch);
+
+            if (IsMouseHovering)
+            {
+                Main.instance.MouseText(LocalizationHelper.GetGUIText("MP3PlayerMenu.FileDialogTooltip"));
+            }
         }
 
         private void RestartSpriteBatch(SpriteBatch spriteBatch)

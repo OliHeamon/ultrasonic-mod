@@ -95,11 +95,9 @@ namespace MP3Player.Content.UI.MP3PlayerUI
                     },
                     message =>
                     {
-                        Color errorColor = Color.Lerp(MP3Player.Pink, Color.Red, 0.75f);
+                        Main.NewText(message, Color.Red);
 
-                        Main.NewText(message, errorColor);
-
-                        linkField.BackgroundColor = errorColor;
+                        linkField.BackgroundColor = Color.Red;
                     }
                 );
 

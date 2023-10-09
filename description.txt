@@ -11,8 +11,11 @@ https://discord.gg/vYZWcXgAfR
 
 Update Log:
 
+v1.5:
+-Added the ability to import local MP3 files into the ingame library. To open a file selection window, simply double click on the text box at the bottom of the GUI.
+
 v1.4:
--Added a 'Blood Moon' option to biomes list.
+-Added a 'Blood Moon' option to the biomes list.
 -The primary and secondary colours on the GUI's screen can now be customised in the config.
 
 v1.3.4:
