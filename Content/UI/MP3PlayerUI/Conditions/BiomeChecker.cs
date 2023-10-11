@@ -90,11 +90,11 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Conditions
             Register("SurfaceJungle", p => p.ZoneJungle && p.ZoneOverworldHeight, 0.2f);
             Register("UndergroundJungle", p => p.ZoneJungle && (p.ZoneRockLayerHeight || p.ZoneDirtLayerHeight), 0.4f);
 
-            Register("SurfaceDesert", p => p.ZoneDesert, 0.2f);
-            Register("UndergroundDesert", p => p.ZoneDesert, 0.4f);
+            Register("SurfaceDesert", p => p.ZoneDesert && p.ZoneOverworldHeight, 0.2f);
+            Register("UndergroundDesert", p => p.ZoneDesert && (p.ZoneRockLayerHeight || p.ZoneDirtLayerHeight), 0.4f);
 
-            Register("SurfaceSnow", p => p.ZoneSnow, 0.2f);
-            Register("UndergroundSnow", p => p.ZoneSnow, 0.4f);
+            Register("SurfaceSnow", p => p.ZoneSnow && p.ZoneOverworldHeight, 0.2f);
+            Register("UndergroundSnow", p => p.ZoneSnow && (p.ZoneRockLayerHeight || p.ZoneDirtLayerHeight), 0.4f);
 
             Register("Ocean", p => p.ZoneBeach, 0.2f);
             Register("Space", p => p.ZoneNormalSpace, 0.6f);
@@ -110,6 +110,7 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Conditions
             Register("Thunderstorm", p => p.ZoneOverworldHeight && Main.IsItAHappyWindyDay && Main.cloudAlpha > 2 / 3f, 0.2f);
             Register("Sandstorm", p => p.ZoneSandstorm, 0.8f);
             Register("BloodMoon", p => Main.bloodMoon, 0.25f);
+            Register("SolarEclipse", p => Main.eclipse && p.ZoneOverworldHeight, 1.5f);
 
             Register("LunarEvent", p => p.ZoneTowerNebula || p.ZoneTowerSolar || p.ZoneTowerStardust || p.ZoneTowerVortex, 1);
             Register("OOA", p => p.ZoneOldOneArmy, 1);

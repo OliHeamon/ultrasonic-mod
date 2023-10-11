@@ -200,6 +200,11 @@ namespace MP3Player.Content.Audio
 
                 Mod mod = ModLoader.GetMod(modName);
 
+                if (mod == null)
+                {
+                    return false;
+                }
+
                 bool found = mod.TryFind(npcName, out ModNPC value);
 
                 if (!found)

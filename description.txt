@@ -11,6 +11,13 @@ https://discord.gg/vYZWcXgAfR
 
 Update Log:
 
+v1.5.3:
+-Fixed a bug where the game would softlock if a modded boss had a preset and the mod was disabled.
+
+v1.5.2:
+-Added Solar Eclipse to the biome list.
+-Fixed a bug where the themes for the underground snow and underground desert biomes were not working properly.
+
 v1.5.1:
 -Added Eater of Worlds to the boss list.
 -Removed duplicate Moon Lord entries from the boss list.
