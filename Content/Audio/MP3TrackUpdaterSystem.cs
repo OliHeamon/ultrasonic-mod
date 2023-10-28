@@ -198,16 +198,12 @@ namespace MP3Player.Content.Audio
                 string modName = condition.Split('.')[0];
                 string npcName = condition.Split('.')[^1];
 
-                Mod mod = ModLoader.GetMod(modName);
-
-                if (mod == null)
+                if (!ModLoader.TryGetMod(modName, out Mod mod))
                 {
                     return false;
                 }
 
-                bool found = mod.TryFind(npcName, out ModNPC value);
-
-                if (!found)
+                if (!mod.TryFind(npcName, out ModNPC value))
                 {
                     return false;
                 }

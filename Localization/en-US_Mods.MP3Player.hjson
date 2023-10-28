@@ -62,6 +62,7 @@ UI: {
 		FFmpegError: Error converting file! This youtube video is not correctly formatted for ingame use.
 		FileSelect: Select an MP3 file to import.
 		ImportSuccessful: Successfully imported MP3 file '{0}' into the ingame library!
+		AddedByUser: Local File
 	}
 
 	MP3PlayerMenu: {

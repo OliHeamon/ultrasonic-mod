@@ -11,6 +11,9 @@ https://discord.gg/vYZWcXgAfR
 
 Update Log:
 
+v1.5.4:
+-The previous fix was not completely functional, so it has been fixed.
+
 v1.5.3:
 -Fixed a bug where the game would softlock if a modded boss had a preset and the mod was disabled.
 

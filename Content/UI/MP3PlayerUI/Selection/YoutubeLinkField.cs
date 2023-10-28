@@ -80,7 +80,7 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Selection
             byte[] bytes = File.ReadAllBytes(file);
 
             File.WriteAllBytes(songFile, bytes);
-            File.WriteAllText(titleFile, $"{originalFileName}{Environment.NewLine}{Environment.UserName ?? "?"}");
+            File.WriteAllText(titleFile, $"{originalFileName}{Environment.NewLine}{LocalizationHelper.GetGUIText("AsyncMP3Downloader.AddedByUser")}");
 
             Main.NewText(LocalizationHelper.GetGUIText("AsyncMP3Downloader.ImportSuccessful", originalFileName), MP3Player.Cyan);
 
