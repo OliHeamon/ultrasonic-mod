@@ -11,6 +11,9 @@ https://discord.gg/vYZWcXgAfR
 
 Update Log:
 
+v1.5.5:
+-Extremely minor change to accommodate the InfraSonic.
+
 v1.5.4:
 -The previous fix was not completely functional, so it has been fixed.
 

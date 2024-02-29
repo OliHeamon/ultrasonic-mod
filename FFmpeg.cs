@@ -14,6 +14,8 @@ namespace MP3Player
 {
     public static class FFmpeg
     {
+        public static string PlatformBinary => platformBinary;
+
         private static string platformBinary;
 
         public static void Initialise(Mod mod)
