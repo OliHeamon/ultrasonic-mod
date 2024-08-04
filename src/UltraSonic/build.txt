@@ -1,0 +1,5 @@
+displayName = UltraSonic
+author = Oli
+version = 1.6
+dllReferences = AngleSharp, YoutubeExplode
+side = Client

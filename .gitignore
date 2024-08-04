@@ -1,15 +1,15 @@
-﻿/App.config
-/.vs/
-/bin/
-/obj/
-/Properties/
+# Auto-generated IDE files and caches.
+.vs/
+.vscode/
+.idea/
+.catalyst/
 
+# Build outputs and adjacent.
+bin/
+obj/
+
+# User-specific files.
 *.user
-*.sln
-*.cache
-*.zip
-*.rar
-*.ini
 
-commit-message.txt
-*.sfk
+# Extraneous mod binaries.
+src/Carbon/lib/

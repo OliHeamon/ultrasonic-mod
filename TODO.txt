@@ -1,5 +1,0 @@
-FEATURES:
--Make the window movable
-[MAYBE] Replacement targeting specific modded songs instead of biomes or bosses.
-[MAYBE] spotify/soundcloud support
-[MAYBE] playlist mass download
