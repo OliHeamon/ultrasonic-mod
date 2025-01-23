@@ -247,5 +247,10 @@ namespace MP3Player.Content.Audio
                 CurrentlyForcingSong = CurrentlyFadingOut = false;
             }
         }
+
+        public override void PreSaveAndQuit()
+        {
+            PersistentDataStoreSystem.GetDataStore<MP3PlayerDataStore>().ForceSave();
+        }
     }
 }

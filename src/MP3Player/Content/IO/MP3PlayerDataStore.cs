@@ -1,4 +1,5 @@
-﻿using MP3Player.Content.UI.MP3PlayerUI.Enums;
+﻿using Microsoft.Xna.Framework;
+using MP3Player.Content.UI.MP3PlayerUI.Enums;
 using MP3Player.Core.IO;
 using System.Collections.Generic;
 using Terraria.ModLoader.IO;
@@ -16,9 +17,13 @@ namespace MP3Player.Content.IO
 
         private const string ConditionDictionaryTag = "MP3Player:Conditions";
 
+        private const string VolumeAngleTag = "MP3Player:VolumeAngle";
+
         public PlayMode PlayMode { get; set; }
 
         public Dictionary<string, string> Conditions { get; private set; } = new();
+
+        public float VolumeKnobAngle { get; set; } = MathHelper.PiOver2;
 
         public override string FileName => "playback_preferences.dat";
 
@@ -37,8 +42,20 @@ namespace MP3Player.Content.IO
 
                     string conditionKey = item.Key.Replace($"{ConditionDictionaryTag}:", "");
 
+                    // Legacy conversion since keys did not include the actual ModName.
+                    // This will cause old, broken conditions to not persist into the next save.
+                    if (conditionKey.Contains("Calamity."))
+                    {
+                        continue;
+                    }
+
                     Conditions[conditionKey] = uuid;
                 }
+            }
+
+            if (tag.ContainsKey(VolumeAngleTag))
+            {
+                VolumeKnobAngle = tag.GetFloat(VolumeAngleTag);
             }
         }
 
@@ -52,6 +69,8 @@ namespace MP3Player.Content.IO
 
                 tag[key] = item.Value;
             }
+
+            tag[VolumeAngleTag] = VolumeKnobAngle;
         }
 
         public void AddCondition(string condition, string uuid)

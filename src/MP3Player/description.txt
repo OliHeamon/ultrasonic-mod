@@ -11,8 +11,20 @@ https://discord.gg/vYZWcXgAfR
 
 Update Log:
 
+v1.7:
+- Undid the previous fix due to a large number of issues it caused.
+- Fixed an issue similar to v1.5.3 but for biomes.
+- Made the volume knob save (will no longer default to 50% each game open).
+- Changed MP3 importing to convert the target file with ffmpeg, which should fix many bugs related to incorrect song length/skip time/MP3 format.
+- Allowed selection of multiple MP3 files in importing.
+
+v1.6.1:
+- Applied a potential fix for some crashes that were caused by files having an odd number of PCM bytes.
+
 v1.6:
-TODO
+- Ported the mod to .NET 8 to match Terraria's new version.
+- Fixed a bug that prevented pasting from the clipboard on Linux.
+- Fixed a bug with YoutubeExplode that prevented new downloads.
 
 v1.5.4:
 - The previous fix was not completely functional, so it has been fixed.
@@ -32,7 +44,7 @@ v1.5:
 - Added the ability to import local MP3 files into the ingame library. To open a file selection window, simply double click on the text box at the bottom of the GUI.
 
 v1.4:
-- Added a 'Blood Moon' option to the biomes list.
+- Added Blood Moon to the biomes list.
 - The primary and secondary colours on the GUI's screen can now be customised in the config.
 
 v1.3.4:
@@ -42,7 +54,7 @@ v1.3:
 - Fixed a major bug where text would fail to render properly on UI scales above or below 100%.
 - Addressed a bug where rarely certain YouTube videos would download but then crash if the user tried to play them. Instead, the user will now be notified that the video is malformatted and it will not appear on the list.
 - The "Now Playing" popup can now be disabled in the config (but is still on by default).
-- The mod now includes FFmpeg versions for Mac OSX and Linux, meaning the mod now should work on all platforms.
+- The mod now includes FFmpeg versions for Mac OSX and linux, meaning the mod now should work on all platforms.
 
 v1.2:
 - Fixed a major bug where overwriting an existing preset would cause the game to softlock.

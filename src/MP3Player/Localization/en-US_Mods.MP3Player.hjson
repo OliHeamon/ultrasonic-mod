@@ -63,6 +63,7 @@ UI: {
 		FileSelect: Select an MP3 file to import.
 		ImportSuccessful: Successfully imported MP3 file '{0}' into the ingame library!
 		AddedByUser: Local File
+		TooManyFiles: Too many files ({0})! Please import {1} or less at a time.
 	}
 
 	MP3PlayerMenu: {

@@ -53,6 +53,7 @@ namespace MP3Player.Core.Audio
                         }
 
                         Thread.Sleep(incrementMs);
+
                         elapsedMs += incrementMs;
 
                         if (elapsedMs / 1000 > limitSeconds)

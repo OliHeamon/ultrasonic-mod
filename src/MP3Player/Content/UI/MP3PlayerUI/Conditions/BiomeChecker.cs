@@ -16,6 +16,8 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Conditions
 
         private static List<string> biomeNames;
 
+        private static List<string> knownMods;
+
         private static bool registered;
 
         public static List<string> Biomes
@@ -48,6 +50,15 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Conditions
                 Initialise();
             }
 
+            foreach (string mod in knownMods)
+            {
+                if (condition.StartsWith(mod) && !ModLoader.TryGetMod(mod, out _))
+                {
+                    priority = 0;
+                    return false;
+                }
+            }
+
             BiomeConditionEntry entry = biomeConditions[condition];
 
             priority = entry.Priority;
@@ -60,6 +71,7 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Conditions
             biomeIdToName = new();
             biomeConditions = new();
             biomeNames = new();
+            knownMods = new();
 
             RegisterBiomes();
 
@@ -121,14 +133,7 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Conditions
             Register("FrostMoon", p => Main.invasionType == InvasionID.CachedFrostMoon, 1.5f);
             Register("Martians", p => Main.invasionType == InvasionID.MartianMadness, 1);
 
-            if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
-            {
-                Register("Calamity.Crags", p => (bool)calamity.Call("GetInZone", p, "crags"), 0.9f);
-                Register("Calamity.Astral", p => (bool)calamity.Call("GetInZone", p, "astral"), 0.9f);
-                Register("Calamity.SunkenSea", p => (bool)calamity.Call("GetInZone", p, "sunkensea"), 0.9f);
-                Register("Calamity.SulphurSea", p => (bool)calamity.Call("GetInZone", p, "sulphursea"), 0.9f);
-                Register("Calamity.Abyss", p => (bool)calamity.Call("GetInZone", p, "abyss"), 0.9f);
-            }
+            RegisterCalamityEntries();
         }
 
         private static void Register(string biome, Func<Player, bool> condition, float priority)
@@ -140,5 +145,21 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Conditions
         }
 
         private record BiomeConditionEntry(Func<Player, bool> Condition, float Priority);
+
+        private static void RegisterCalamityEntries()
+        {
+            string modName = "CalamityMod";
+
+            knownMods.Add(modName);
+
+            if (ModLoader.TryGetMod(modName, out Mod calamity))
+            {
+                Register($"{modName}.Crags", p => (bool)calamity.Call("GetInZone", p, "crags"), 0.9f);
+                Register($"{modName}.Astral", p => (bool)calamity.Call("GetInZone", p, "astral"), 0.9f);
+                Register($"{modName}.SunkenSea", p => (bool)calamity.Call("GetInZone", p, "sunkensea"), 0.9f);
+                Register($"{modName}.SulphurSea", p => (bool)calamity.Call("GetInZone", p, "sulphursea"), 0.9f);
+                Register($"{modName}.Abyss", p => (bool)calamity.Call("GetInZone", p, "abyss"), 0.9f);
+            }
+        }
     }
 }

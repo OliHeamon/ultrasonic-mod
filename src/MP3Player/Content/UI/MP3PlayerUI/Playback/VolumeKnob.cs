@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using MP3Player.Common.UI.Abstract;
 using MP3Player.Common.UI.Themes;
+using MP3Player.Content.IO;
+using MP3Player.Core.IO;
 using System;
 using Terraria;
 using Terraria.UI;
@@ -22,14 +24,17 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Playback
 
         private float startAngle;
 
+        private readonly MP3PlayerDataStore dataStore;
+
         private float CursorOffsetFromCenterX => Main.MouseScreen.X - (GetDimensions().Position().X + GetDimensions().Width / 2);
 
         public float Volume => (float)Math.Abs(InverseLerp(MinAngle, MaxAngle, angle));
 
         public VolumeKnob()
         {
-            // Start at 50% volume.
-            angle = MathHelper.PiOver2;
+            dataStore = PersistentDataStoreSystem.GetDataStore<MP3PlayerDataStore>();
+
+            angle = dataStore.VolumeKnobAngle;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -67,6 +72,8 @@ namespace MP3Player.Content.UI.MP3PlayerUI.Playback
             }
 
             angle = MathHelper.Clamp(angle, MaxAngle, MinAngle);
+
+            dataStore.VolumeKnobAngle = angle;
 
             base.SafeUpdate(gameTime);
         }
